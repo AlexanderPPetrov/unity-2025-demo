@@ -1,0 +1,54 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Ll]ibrary/
+[Tt]emp/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Oo]bj/
+MemoryCaptures/
+UserSettings/
+
+# Crash and deployment reports
+sysinfo.txt
+
+# =============== #
+# Visual Studio / JetBrains #
+# =============== #
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+
+# Rider
+.idea/
+*.sln.iml
+
+# =============== #
+# OS-generated #
+# =============== #
+.DS_Store
+Thumbs.db
+
+# =============== #
+# Unity Cloud Build #
+# =============== #
+*.apk
+*.aab
+*.xcarchive
+
+# =============== #
+# Custom Exports #
+# =============== #
+ExportedObj/
+*.unitypackage
