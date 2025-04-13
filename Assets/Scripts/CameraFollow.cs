@@ -25,8 +25,6 @@ public class CameraFollow : MonoBehaviour
         float targetY = followY ? followObjectTransform.position.y + offset.y : transform.position.y;
 
 
-        Debug.Log(followObjectTransform.position.x);
-
         Vector3 desiredPosition = new Vector3(targetX, targetY, transform.position.z);
         Vector3 smoothPosition = Vector3.Lerp(transform.position, desiredPosition, cameraSpeed * Time.deltaTime);
         transform.position = smoothPosition;

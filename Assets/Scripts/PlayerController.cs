@@ -36,7 +36,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        //TODO jump logic with ground check and ground layer
         float moveX = Input.GetAxis("Horizontal");
         moveDirection = new Vector2(moveX, 0).normalized;
 
