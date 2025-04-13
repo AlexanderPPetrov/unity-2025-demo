@@ -14,7 +14,6 @@ public class EnemyPatrol : MonoBehaviour
     private DirectionController _directionController;
 
 
-
     //Enemy AI
     //Damager script
     //Mortality script

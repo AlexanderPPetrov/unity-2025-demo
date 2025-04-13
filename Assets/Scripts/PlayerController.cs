@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 
 
     private bool _isGrounded = false;
+    private bool _canDoubleJump = false;
+
+
     private Shooter _shooter;
 
     private Vector2 moveDirection;
@@ -39,24 +42,52 @@ public class PlayerController : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         moveDirection = new Vector2(moveX, 0).normalized;
 
-        if(moveDirection.x != 0)
+        if (moveDirection.x != 0)
         {
             _shooter.facingRight = moveDirection.x > 0;
         }
 
         _directionController.FaceDirection(moveX);
 
+        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             _shooter.Shoot();
         }
 
+        if (_isGrounded)
+        {
+            _canDoubleJump = true;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            if (_isGrounded)
+            {
+                Jump();
+            } else if (_canDoubleJump)
+            {
+                Jump();
+                _canDoubleJump = false;
+            }
+
+        }
+
+
+    }
+
+    private void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
 
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, 0);
+        rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
     }
 
 }

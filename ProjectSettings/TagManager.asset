@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ClickBlock
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,9 @@ TagManager:
   - UI
   - Background
   - Player
-  - Bullets & Projectiles
+  - Player Bullets & Projectiles
   - Enemies
-  - 
+  - Enemies Bullets & Projectiles
   - 
   - 
   - 
