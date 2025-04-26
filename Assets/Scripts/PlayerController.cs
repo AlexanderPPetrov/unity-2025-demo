@@ -7,7 +7,10 @@ public class PlayerController : MonoBehaviour
 
 
     [Header("Movement settings")]
-    public float moveSpeed = 5f;
+    public float walkSpeed = 3f;
+    public float runSpeed = 7f;
+    public float acceleration = 10f;
+    public float deceleration = 10f;
     public float jumpForce = 2f;
 
     [Header("Grounded settings")]
@@ -18,6 +21,11 @@ public class PlayerController : MonoBehaviour
 
     private bool _isGrounded = false;
     private bool _canDoubleJump = false;
+    //private bool _isRunning = false;
+    private float _currentSpeed = 0f;
+    private float _targetSpeed = 0f;
+
+    private AudioSource _shootSound;
 
 
     private Shooter _shooter;
@@ -27,12 +35,20 @@ public class PlayerController : MonoBehaviour
 
     private DirectionController _directionController;
 
+    public Animator animator;
+
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         _shooter = GetComponentInChildren<Shooter>();
         _directionController = GetComponent<DirectionController>();
+        _shootSound = GetComponent<AudioSource>();
+
+    }
+
+    private void Start()
+    {
     }
 
     // Update is called once per frame
@@ -40,20 +56,33 @@ public class PlayerController : MonoBehaviour
     {
 
         float moveX = Input.GetAxis("Horizontal");
-        moveDirection = new Vector2(moveX, 0).normalized;
+        bool isRunning = Input.GetKey(KeyCode.LeftShift);
 
-        if (moveDirection.x != 0)
+        float speed = isRunning ? runSpeed : walkSpeed;
+        _targetSpeed = moveX * speed;
+
+
+        float accelerationRate = (Mathf.Abs(_targetSpeed) > 0) ? acceleration : deceleration;
+
+        _currentSpeed =
+            Mathf.MoveTowards(_currentSpeed, _targetSpeed, accelerationRate * Time.deltaTime);
+
+        if (moveX != 0)
         {
-            _shooter.facingRight = moveDirection.x > 0;
+            _shooter.facingRight = moveX > 0;
         }
 
         _directionController.FaceDirection(moveX);
 
+
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
 
         if (Input.GetKeyDown(KeyCode.F))
         {
             _shooter.Shoot();
+            animator.SetTrigger("Attack");
+            _shootSound.Play();
         }
 
         if (_isGrounded)
@@ -77,17 +106,29 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        animator.SetFloat("VelocityX", Mathf.Abs(rb.velocity.x));
+
     }
 
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        animator.SetTrigger("Jump");
     }
 
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(_currentSpeed, rb.velocity.y);
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("HealthCollectable"))
+        {
+            Debug.Log("Health");
+        }
     }
 
 }

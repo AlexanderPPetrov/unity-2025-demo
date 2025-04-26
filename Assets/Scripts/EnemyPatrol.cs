@@ -15,8 +15,8 @@ public class EnemyPatrol : MonoBehaviour
 
 
     //Enemy AI
+    //Mortality script  
     //Damager script
-    //Mortality script
     //Health bar
     private void Awake()
     {

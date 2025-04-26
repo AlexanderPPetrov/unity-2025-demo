@@ -1,27 +1,20 @@
 ﻿<Properties StartupConfiguration="{44A71E8E-C63D-82F0-6DC9-70B80FF3E23B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemySpawn.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/HealthCollectable.cs">
     <Files>
-      <File FileName="Assets/EnemyPatrol.cs" Line="18" Column="25" />
-      <File FileName="Assets/Scripts/DirectionController.cs" Line="32" Column="1" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="29" Column="1" />
-      <File FileName="Assets/Scripts/Shooter.cs" Line="22" Column="1" />
-      <File FileName="Assets/Scripts/CameraFollow.cs" Line="22" Column="10" />
-      <File FileName="Assets/Scripts/EnemyAI.cs" Line="26" Column="1" />
-      <File FileName="Assets/Scripts/Mortality.cs" Line="34" Column="36" />
-      <File FileName="Assets/Scripts/Damager.cs" Line="22" Column="1" />
-      <File FileName="Assets/Scripts/EnemySpawn.cs" Line="12" Column="30" />
+      <File FileName="Assets/Scripts/DirectionController.cs" Line="23" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="131" Column="10" />
+      <File FileName="Assets/Scripts/Shooter.cs" />
+      <File FileName="Assets/Scripts/CameraFollow.cs" />
+      <File FileName="Assets/Scripts/Mortality.cs" />
+      <File FileName="Assets/Scripts/Damager.cs" />
+      <File FileName="Assets/Scripts/EnemySpawn.cs" />
+      <File FileName="Assets/Scripts/ParticlesFollower.cs" />
+      <File FileName="Assets/HealthCollectable.cs" Line="9" Column="30" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="unity-2025-demo" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9a4213f7-f5d9-480c-83a7-1279390f5710" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d7d8be1c-1793-4974-8b1f-0f436924edf1" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
