@@ -25,7 +25,10 @@ public class PlayerController : MonoBehaviour
     private float _currentSpeed = 0f;
     private float _targetSpeed = 0f;
 
-    private AudioSource _shootSound;
+    public AudioSource _shootSound;
+    public AudioSource _jumpSound;
+    public AudioSource _doubleJumpSound;
+    public AudioSource _dieSound;
 
 
     private Shooter _shooter;
@@ -93,21 +96,26 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
-            if (_isGrounded)
-            {
-                Jump();
-            } else if (_canDoubleJump)
-            {
-                Jump();
-                _canDoubleJump = false;
-            }
-
+            HandleJump();
         }
-
 
         animator.SetFloat("VelocityX", Mathf.Abs(rb.velocity.x));
 
+    }
+
+    private void HandleJump()
+    {
+        if (_isGrounded)
+        {
+            Jump();
+            _jumpSound.Play();
+        }
+        else if (_canDoubleJump)
+        {
+            Jump();
+            _doubleJumpSound.Play();
+            _canDoubleJump = false;
+        }
     }
 
     private void Jump()

@@ -15,10 +15,12 @@ public class EnemyAI : MonoBehaviour
     public float shootDistance = 5f;
     public float shootCooldown = 0.2f;
     public Shooter shooter;
-    private float _lastShotTime = Mathf.NegativeInfinity;
-
     public Rigidbody2D rb;
+    public AudioSource shootSound;
+
+    private float _lastShotTime = Mathf.NegativeInfinity;
     private GameObject player;
+
 
     void FixedUpdate()
     {
@@ -50,6 +52,10 @@ public class EnemyAI : MonoBehaviour
         if (distanceToPlayer <= shootDistance && Time.time >= _lastShotTime + shootCooldown)
         {
             shooter.Shoot();
+            if(shootSound != null)
+            {
+                shootSound.Play();
+            }
             _lastShotTime = Time.time;
         }
 
